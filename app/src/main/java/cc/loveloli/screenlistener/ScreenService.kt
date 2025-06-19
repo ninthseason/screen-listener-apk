@@ -4,6 +4,8 @@ import android.app.Notification
 import android.app.NotificationChannel
 import android.app.NotificationManager
 import android.app.Service
+import android.app.usage.UsageStatsManager
+import android.content.Context
 import android.content.Intent
 import android.os.IBinder
 
@@ -13,9 +15,6 @@ class ScreenService : Service() {
     }
 
     private lateinit var screenReceiver: ScreenReceiver
-    private var urlM: String = ""
-    private var usernameM: String = ""
-    private var passwordM: String = ""
 
     override fun onCreate() {
         super.onCreate()
@@ -23,17 +22,13 @@ class ScreenService : Service() {
     }
 
     override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
-        // 获取传入的参数
-        urlM = intent?.getStringExtra("url") ?: ""
-        usernameM = intent?.getStringExtra("username") ?: ""
-        passwordM = intent?.getStringExtra("password") ?: ""
-
+        val prefs = getSharedPreferences("user_input", Context.MODE_PRIVATE)
         // 注册广播，并将参数传入
         screenReceiver = ScreenReceiver().apply {
             // 使用构造函数或 setter 方法传入参数
-            this.url = urlM
-            this.username = usernameM
-            this.password = passwordM
+            this.url = prefs.getString("url", "").toString()
+            this.username = prefs.getString("username", "").toString()
+            this.password = prefs.getString("password", "").toString()
         }
         registerReceiver(screenReceiver, ScreenReceiver.intentFilter)
 
@@ -65,7 +60,24 @@ class ScreenService : Service() {
             .setSmallIcon(android.R.drawable.ic_notification_overlay)
             .setOngoing(true)
             .build()
+
         startForeground(1, notification)
+    }
+
+    fun getTopApp(context: Context): String? {
+        val usm = context.getSystemService(Context.USAGE_STATS_SERVICE) as UsageStatsManager
+        val time = System.currentTimeMillis()
+        val appList = usm.queryUsageStats(
+            UsageStatsManager.INTERVAL_DAILY,
+            time - 1000 * 10,
+            time
+        )
+
+        if (appList != null && appList.isNotEmpty()) {
+            val recentApp = appList.maxByOrNull { it.lastTimeUsed }
+            return recentApp?.packageName
+        }
+        return null
     }
 
     override fun onBind(intent: Intent?): IBinder? = null

@@ -5,62 +5,125 @@
     android:layout_marginTop="50sp"
     android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/serviceState"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="serviceState"
-        android:textSize="34sp" />
+        android:orientation="vertical">
 
-    <Button
-        android:id="@+id/checkServiceBtn"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="check service" />
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Screen Listener" />
 
-    <Button
-        android:id="@+id/startServiceBtn"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="enable service" />
+        <TextView
+            android:id="@+id/serviceState"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="serviceState"
+            android:textSize="34sp" />
 
-    <Button
-        android:id="@+id/stopServiceBtn"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="disable service" />
+        <Button
+            android:id="@+id/checkServiceBtn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="check service" />
 
-    <EditText
-        android:id="@+id/urlText"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:hint="URL"
-        android:inputType="text"
-        android:textSize="20sp" />
+        <Button
+            android:id="@+id/startServiceBtn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="enable service" />
 
-    <EditText
-        android:id="@+id/usernameText"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:hint="Username"
-        android:inputType="text"
-        android:textSize="20sp" />
+        <Button
+            android:id="@+id/stopServiceBtn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="disable service" />
 
-    <EditText
-        android:id="@+id/passwordText"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:hint="Password"
-        android:inputType="text"
-        android:textSize="20sp" />
+        <EditText
+            android:id="@+id/urlText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="URL"
+            android:inputType="text"
+            android:textSize="20sp" />
 
-    <Button
-        android:id="@+id/saveConfigBtn"
+        <EditText
+            android:id="@+id/usernameText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="Username"
+            android:inputType="text"
+            android:textSize="20sp" />
+
+        <EditText
+            android:id="@+id/passwordText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="Password"
+            android:inputType="text"
+            android:textSize="20sp" />
+
+        <Button
+            android:id="@+id/saveConfigBtn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="save config" />
+    </LinearLayout>
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="save config" />
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="App Monitor" />
+
+        <Button
+            android:id="@+id/setPermissionBtn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="set permission" />
+
+        <EditText
+            android:id="@+id/AMUrlText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="URL"
+            android:inputType="text"
+            android:textSize="20sp" />
+
+        <EditText
+            android:id="@+id/AMUsernameText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="Username"
+            android:inputType="text"
+            android:textSize="20sp" />
+
+        <EditText
+            android:id="@+id/AMPasswordText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="Password"
+            android:inputType="text"
+            android:textSize="20sp" />
+
+        <Button
+            android:id="@+id/AMSaveConfigBtn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Save Config" />
+    </LinearLayout>
 
 </LinearLayout>
